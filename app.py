@@ -8,15 +8,21 @@ from utils.ports.power_terminal import PowerTerminal
 
 from pyfirmata import ArduinoMega
 
-config = {
-    'digital' : tuple(x for x in range(54)),
-    'analog' : tuple(x for x in range(16)),
-    'pwm' : tuple(x for x in range(2,14)),
-    'use_ports' : True,
-    'disabled' : (0, 1, 14, 15)
-}
-
-board = '' # ArduinoMega('COM8')
+from time import sleep
+board = ArduinoMega('COM11')
 vcc = PowerTerminal(board=board, mode=PortModes.POWER)
 gnd = PowerTerminal(board=board, mode=PortModes.GROUND)
-thermo_input = AnalogPort(port=ArduinoMegaAnalogPorts.A0, board=board)
+
+reles = [50, 51, 52, 53]
+modulos_potencia = [5, 6, 7, 8]
+reles = [
+    DigitalPort(port=porta, board=board, mode='o') for porta in [50, 51, 52, 53]
+]
+
+resistencia = DigitalPort(port=6, board=board, mode='p')
+
+while True:
+    resistencia.write(0.5)
+
+
+# thermo_input = AnalogPort(port=ArduinoMegaAnalogPorts.A8, board=board)

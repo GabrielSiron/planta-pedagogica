@@ -13,21 +13,22 @@ class AnalogPort(Pin):
     MAX = 1023
     
     def __init__(self, port: Union[ArduinoMegaAnalogPorts, ArduinoAnalogPorts, Any], board: Union[Board, Any]):
-        if not isinstance(board, Board):
-            raise InvalidBoard()
+        # if not isinstance(board, Board):
+        #     raise InvalidBoard()
         
-        if not isinstance(port, Enum):
-            raise InvalidPort()
+        # if not isinstance(port, Enum):
+        #     raise InvalidPort()
         
-        if isinstance(board, ArduinoMega):
-            if port not in ArduinoMegaAnalogPorts:
-                raise InvalidPortForBoard()
+        # if isinstance(board, ArduinoMega):
+        #     if port not in ArduinoMegaAnalogPorts:
+        #         raise InvalidPortForBoard()
 
-            raise InvalidPortForBoard()
+        #     raise InvalidPortForBoard()
         
-        if isinstance(board, Arduino):
-            if port not in ArduinoAnalogPorts:
-                raise InvalidPort()
+        # if isinstance(board, Arduino):
+        #     if port not in ArduinoAnalogPorts:
+        #         raise InvalidPort()
+
         super().__init__()
         
         self.max = Pin.ANALOG_MAX_LIMIT
