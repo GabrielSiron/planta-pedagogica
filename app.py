@@ -19,10 +19,16 @@ reles = [
     DigitalPort(port=porta, board=board, mode='o') for porta in [50, 51, 52, 53]
 ]
 
+valvula = [
+    DigitalPort(port=porta, board=board, mode='o') for porta in [22, 23, 24, 25]
+]
+
 resistencia = DigitalPort(port=6, board=board, mode='p')
 
 while True:
-    resistencia.write(0.5)
-
+    valvula[0].write(1)
+    sleep(1)
+    valvula[0].write(0)
+    sleep(0)
 
 # thermo_input = AnalogPort(port=ArduinoMegaAnalogPorts.A8, board=board)
